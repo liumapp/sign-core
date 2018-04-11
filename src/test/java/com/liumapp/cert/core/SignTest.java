@@ -29,7 +29,9 @@ public class SignTest extends TestCase {
         PdfSignByAliasPattern pdfSignByAliasPattern = initPdfSignByAliasPattern();
 
         try {
-            String tmpPdfOut = "final_" + pdfSignByAliasPattern.getTmpPdf() ;
+            String tmpPdfOut = pdfSignByAliasPattern.getTmpPdf() ;
+            String[] tmps = tmpPdfOut.split(".pdf");
+            tmpPdfOut = tmps[0] + "/pdf/final.pdf";
 
             KeyStore ks = KeyStore.getInstance("jks");
             ks.load(new FileInputStream(pdfSignByAliasPattern.getKeystore()) , pdfSignByAliasPattern.getKeystorePd().toCharArray());
