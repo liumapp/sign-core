@@ -61,11 +61,11 @@ public class SignTest extends TestCase {
 
     private PdfSignByAliasPattern initPdfSignByAliasPattern () {
         PdfSignByAliasPattern pdfSignByAliasPattern = new PdfSignByAliasPattern();
-//        pdfSignByAliasPattern.setAlias("4bbdc076d4493b52209b17643fb85b00baa58522");
-        pdfSignByAliasPattern.setAlias("first-certificate");
+        pdfSignByAliasPattern.setAlias("4bbdc076d4493b52209b17643fb85b00baa58522");
+//        pdfSignByAliasPattern.setAlias("first-certificate");
         pdfSignByAliasPattern.setKeystore("/usr/local/tomcat/project/sign-core/ks/demo.ks");
         pdfSignByAliasPattern.setKeystorePd("123456");
-        pdfSignByAliasPattern.setCertPd("123123");
+        pdfSignByAliasPattern.setCertPd("password");
         pdfSignByAliasPattern.setSignatureField("certA");
         pdfSignByAliasPattern.setTmpImg("/usr/local/tomcat/project/sign-core/pic/pic.jpg");
         pdfSignByAliasPattern.setTmpPdf("/usr/local/tomcat/project/sign-core/pdf/with_sign_area_test.pdf");
