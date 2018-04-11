@@ -10,6 +10,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.FileInputStream;
+import java.security.Key;
 import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.cert.Certificate;
@@ -33,9 +34,8 @@ public class SignTest extends TestCase {
             String[] tmps = tmpPdfOut.split(".pdf");
             tmpPdfOut = tmps[0] + "/pdf/final.pdf";
 
-            KeyStore ks = KeyStore.getInstance("jks");
+            KeyStore ks = KeyStore.getInstance("JKS");
             ks.load(new FileInputStream(pdfSignByAliasPattern.getKeystore()) , pdfSignByAliasPattern.getKeystorePd().toCharArray());
-
             PrivateKey pk = (PrivateKey) ks.getKey(pdfSignByAliasPattern.getAlias() , pdfSignByAliasPattern.getCertPd().toCharArray());
             Certificate[] chain = ks.getCertificateChain(pdfSignByAliasPattern.getAlias());
 
@@ -45,7 +45,7 @@ public class SignTest extends TestCase {
             signatureInfo.setPk(pk);
             signatureInfo.setChain(chain);
             signatureInfo.setCertificationLevel(PdfSignatureAppearance.NOT_CERTIFIED);
-            signatureInfo.setDigestAlgorithm(DigestAlgorithms.SHA1);
+            signatureInfo.setDigestAlgorithm(DigestAlgorithms.SHA256);
             signatureInfo.setFieldName(pdfSignByAliasPattern.getSignatureField());
             signatureInfo.setImagePath(pdfSignByAliasPattern.getTmpImg());
             signatureInfo.setRenderingMode(PdfSignatureAppearance.RenderingMode.GRAPHIC);
@@ -61,11 +61,11 @@ public class SignTest extends TestCase {
 
     private PdfSignByAliasPattern initPdfSignByAliasPattern () {
         PdfSignByAliasPattern pdfSignByAliasPattern = new PdfSignByAliasPattern();
-        pdfSignByAliasPattern.setAlias("4bbdc076d4493b52209b17643fb85b00baa58522");
+        pdfSignByAliasPattern.setAlias("19643137d8482943fbdd94075cd4302edd5b0908");
 //        pdfSignByAliasPattern.setAlias("first-certificate");
         pdfSignByAliasPattern.setKeystore("/usr/local/tomcat/project/sign-core/ks/demo.ks");
         pdfSignByAliasPattern.setKeystorePd("123456");
-        pdfSignByAliasPattern.setCertPd("password");
+        pdfSignByAliasPattern.setCertPd("1");
         pdfSignByAliasPattern.setSignatureField("certA");
         pdfSignByAliasPattern.setTmpImg("/usr/local/tomcat/project/sign-core/pic/pic.jpg");
         pdfSignByAliasPattern.setTmpPdf("/usr/local/tomcat/project/sign-core/pdf/with_sign_area_test.pdf");
