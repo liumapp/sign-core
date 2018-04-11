@@ -29,14 +29,6 @@ import java.security.cert.Certificate;
  */
 public class SignTest extends TestCase {
 
-    protected Properties properties;
-
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-        properties = new Properties("config/sign.properties");
-    }
-
     @Ignore
     @Test
     public void testSign () {
