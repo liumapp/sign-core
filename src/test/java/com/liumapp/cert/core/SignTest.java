@@ -36,6 +36,10 @@ public class SignTest extends TestCase {
 
             KeyStore ks = KeyStore.getInstance("JKS");
             ks.load(new FileInputStream(pdfSignByAliasPattern.getKeystore()) , pdfSignByAliasPattern.getKeystorePd().toCharArray());
+//            KeyStore.Entry entry = ks.getEntry(pdfSignByAliasPattern.getAlias() , new KeyStore.PasswordProtection(pdfSignByAliasPattern.getCertPd().toCharArray()));
+//            Certificate certificate = ks.getCertificate(pdfSignByAliasPattern.getAlias());
+//            Certificate[] chain = ks.getCertificateChain(pdfSignByAliasPattern.getAlias());
+
             PrivateKey pk = (PrivateKey) ks.getKey(pdfSignByAliasPattern.getAlias() , pdfSignByAliasPattern.getCertPd().toCharArray());
             Certificate[] chain = ks.getCertificateChain(pdfSignByAliasPattern.getAlias());
 
