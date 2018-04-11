@@ -36,12 +36,12 @@ public class SignTest extends TestCase {
 
             KeyStore ks = KeyStore.getInstance("JKS");
             ks.load(new FileInputStream(pdfSignByAliasPattern.getKeystore()) , pdfSignByAliasPattern.getKeystorePd().toCharArray());
-//            KeyStore.Entry entry = ks.getEntry(pdfSignByAliasPattern.getAlias() , new KeyStore.PasswordProtection(pdfSignByAliasPattern.getCertPd().toCharArray()));
-//            Certificate certificate = ks.getCertificate(pdfSignByAliasPattern.getAlias());
-//            Certificate[] chain = ks.getCertificateChain(pdfSignByAliasPattern.getAlias());
+//            KeyStore.Entry entry = ks.getEntry(pdfSignByAliasPattern.getAlias() , new KeyStore.PasswordProtection(null));
+            Certificate certificate = ks.getCertificate(pdfSignByAliasPattern.getAlias());
+            Certificate[] chain = ks.getCertificateChain(pdfSignByAliasPattern.getAlias());
 
             PrivateKey pk = (PrivateKey) ks.getKey(pdfSignByAliasPattern.getAlias() , pdfSignByAliasPattern.getCertPd().toCharArray());
-            Certificate[] chain = ks.getCertificateChain(pdfSignByAliasPattern.getAlias());
+//            Certificate[] chain = ks.getCertificateChain(pdfSignByAliasPattern.getAlias());
 
             SignatureInfo signatureInfo = new SignatureInfo();
             signatureInfo.setReason("this is reason");
@@ -65,6 +65,7 @@ public class SignTest extends TestCase {
 
     private PdfSignByAliasPattern initPdfSignByAliasPattern () {
         PdfSignByAliasPattern pdfSignByAliasPattern = new PdfSignByAliasPattern();
+//        pdfSignByAliasPattern.setAlias("958c82d956b4bf5229ec59e9e58c113ed877e88c");
         pdfSignByAliasPattern.setAlias("19643137d8482943fbdd94075cd4302edd5b0908");
 //        pdfSignByAliasPattern.setAlias("first-certificate");
         pdfSignByAliasPattern.setKeystore("/usr/local/tomcat/project/sign-core/ks/demo.ks");
