@@ -29,11 +29,13 @@ public class SignatureAreaPattern {
 
     private String tmpFile;
 
+    private String saveFile;
+
     public SignatureAreaPattern() {
 
     }
 
-    public SignatureAreaPattern(String name, BigDecimal firstX, BigDecimal firstY, BigDecimal secondX, BigDecimal secondY, String fileKey, Integer pageNumber, String tmpFile) {
+    public SignatureAreaPattern(String name, BigDecimal firstX, BigDecimal firstY, BigDecimal secondX, BigDecimal secondY, String fileKey, Integer pageNumber, String tmpFile, String saveFile) {
         this.name = name;
         this.firstX = firstX;
         this.firstY = firstY;
@@ -42,6 +44,15 @@ public class SignatureAreaPattern {
         this.fileKey = fileKey;
         this.pageNumber = pageNumber;
         this.tmpFile = tmpFile;
+        this.saveFile = saveFile;
+    }
+
+    public String getSaveFile() {
+        return saveFile;
+    }
+
+    public void setSaveFile(String saveFile) {
+        this.saveFile = saveFile;
     }
 
     public String getName() {

@@ -19,16 +19,14 @@ import java.math.BigDecimal;
  */
 public class BuildSignAreaTest extends TestCase {
 
-
     @Ignore
     @Test
     public void testMakeArea () {
         SignatureAreaPattern signatureAreaPattern = initSignatureAreaPattern();
         try {
-            String fileResultName = "with_sign_area_" + signatureAreaPattern.getTmpFile();
 
-            PdfReader pdfReader = new PdfReader(properties.getString(SignConstant.save_PdfPath) + signatureAreaPattern.getTmpFile());
-            FileOutputStream out = new FileOutputStream(properties.getString(SignConstant.save_PdfPath) + fileResultName);
+            PdfReader pdfReader = new PdfReader(signatureAreaPattern.getTmpFile());
+            FileOutputStream out = new FileOutputStream(signatureAreaPattern.getSaveFile());
             PdfStamper pdfStamper = new PdfStamper(pdfReader , out);
             pdfStamper.addSignature(signatureAreaPattern.getName() , signatureAreaPattern.getPageNumber() , signatureAreaPattern.getFirstX().floatValue() , signatureAreaPattern.getFirstY().floatValue() , signatureAreaPattern.getSecondX().floatValue() , signatureAreaPattern.getSecondY().floatValue());
             pdfStamper.close();
@@ -47,7 +45,8 @@ public class BuildSignAreaTest extends TestCase {
         signatureAreaPattern.setSecondY(new BigDecimal(80));
         signatureAreaPattern.setFileKey("testfile001");
         signatureAreaPattern.setPageNumber(1);
-        signatureAreaPattern.setTmpFile("test.pdf");
+        signatureAreaPattern.setTmpFile("/usr/local/tomcat/project/sign-core/pdf/test.pdf");
+        signatureAreaPattern.setSaveFile("/usr/local/tomcat/project/sign-core/pdf/with_sign_area_test.pdf");
         return signatureAreaPattern;
     }
 }
