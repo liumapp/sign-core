@@ -1,4 +1,4 @@
-package com.liumapp.cert.core.pattern;
+package com.liumapp.sign.core.pattern;
 
 /**
  * Created by liumapp on 3/5/18.

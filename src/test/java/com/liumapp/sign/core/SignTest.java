@@ -1,16 +1,15 @@
-package com.liumapp.cert.core;
+package com.liumapp.sign.core;
 
 import com.itextpdf.text.pdf.PdfSignatureAppearance;
 import com.itextpdf.text.pdf.security.DigestAlgorithms;
-import com.liumapp.cert.core.entity.Sign;
-import com.liumapp.cert.core.entity.SignatureInfo;
-import com.liumapp.cert.core.pattern.PdfSignByAliasPattern;
+import com.liumapp.sign.core.entity.Sign;
+import com.liumapp.sign.core.entity.SignatureInfo;
+import com.liumapp.sign.core.pattern.PdfSignByAliasPattern;
 import junit.framework.TestCase;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.FileInputStream;
-import java.security.Key;
 import java.security.KeyStore;
 import java.security.PrivateKey;
 import java.security.cert.Certificate;

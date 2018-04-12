@@ -1,4 +1,4 @@
-package com.liumapp.cert.core.entity;
+package com.liumapp.sign.core.entity;
 
 import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfReader;
