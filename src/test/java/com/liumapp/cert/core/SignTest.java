@@ -31,17 +31,13 @@ public class SignTest extends TestCase {
 
         try {
             String tmpPdfOut = pdfSignByAliasPattern.getTmpPdf() ;
-            String[] tmps = tmpPdfOut.split(".pdf");
-            tmpPdfOut = tmps[0] + "/pdf/final.pdf";
+            tmpPdfOut = "/usr/local/tomcat/project/sign-core/pdf/final.pdf";
 
             KeyStore ks = KeyStore.getInstance("JKS");
             ks.load(new FileInputStream(pdfSignByAliasPattern.getKeystore()) , pdfSignByAliasPattern.getKeystorePd().toCharArray());
-            KeyStore.Entry entry = ks.getEntry(pdfSignByAliasPattern.getAlias() , new KeyStore.PasswordProtection(pdfSignByAliasPattern.getCertPd().toCharArray()));
-            Certificate certificate = ks.getCertificate(pdfSignByAliasPattern.getAlias());
-            Certificate[] chain = ks.getCertificateChain(pdfSignByAliasPattern.getAlias());
 
             PrivateKey pk = (PrivateKey) ks.getKey(pdfSignByAliasPattern.getAlias() , pdfSignByAliasPattern.getCertPd().toCharArray());
-//            Certificate[] chain = ks.getCertificateChain(pdfSignByAliasPattern.getAlias());
+            Certificate[] chain = ks.getCertificateChain(pdfSignByAliasPattern.getAlias());
 
             SignatureInfo signatureInfo = new SignatureInfo();
             signatureInfo.setReason("this is reason");
